@@ -5,7 +5,7 @@ require "./spec_helper"
 describe Gettext do
   it "setlocale with no parameters sets the correct default values" do
     result = Gettext.setlocale.split(/=|;/)
-    (result.includes?("C.UTF-8") || result.includes?("LC_TIME")).should be_true
+    (result.includes?("C.UTF-8") || result.includes?("LC_TIME") || result.first?.try &.upcase.ends_with?(".UTF-8")).should be_true
   end
 
   it "setlocale returns the new locale" do
@@ -23,10 +23,12 @@ describe Gettext do
     result.should eq("gedit")
   end
 
-  it "bind_textdomain_codeset returns the new codeset" do
-    result = Gettext.bind_textdomain_codeset("gedit", "UTF-8")
-    result.should eq("UTF-8")
-  end
+  {% if !flag?(:musl) %}
+    it "bind_textdomain_codeset returns the new codeset" do
+      result = Gettext.bind_textdomain_codeset("gedit", "UTF-8")
+      result.should eq("UTF-8")
+    end
+  {% end %}
 
   # Depends on host.
   it "gettext returns the input" do

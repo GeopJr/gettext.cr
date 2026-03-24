@@ -2,6 +2,7 @@ steps:
   specs:
     image: crystallang/crystal:latest-alpine
     commands:
+      - apk add --no-cache gettext-dev lang
       - shards install
       - crystal tool format; git diff --exit-code
       - crystal spec --order=random
