@@ -8,7 +8,7 @@
    ```yaml
    dependencies:
      gettext:
-       github: GeopJr/gettext.cr
+       git: https://codeberg.org/GeopJr/gettext.cr.git
    ```
 
 2. Run `shards install`
@@ -27,8 +27,8 @@ Gettext.ngettext("Crystal", "Crystals", rand(5)) # => "Crystals" or "Crystal"
 
 ## Contributing
 
-1. Read the [Code of Conduct](https://github.com/GeopJr/gettext.cr/blob/main/CODE_OF_CONDUCT.md)
-2. Fork it (<https://github.com/GeopJr/gettext.cr/fork>)
+1. Read the [Code of Conduct](./CODE_OF_CONDUCT.md)
+2. Fork it (<https://codeberg.org/GeopJr/gettext.cr/fork>)
 3. Create your feature branch (`git checkout -b my-new-feature`)
 4. Commit your changes (`git commit -am 'Add some feature'`)
 5. Push to the branch (`git push origin my-new-feature`)
